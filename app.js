@@ -1,6 +1,6 @@
 const list = document.querySelectorAll('#select');
 const btn = document.querySelector("#convert");
-const input = parseFloat(document.querySelector("#input"));
+const input = document.querySelector("#input");
 
 const BASE_URL ="https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json";
 
@@ -39,8 +39,8 @@ const changeflag = (element) =>{
 
 btn.addEventListener("click",async (evt)=>{
     evt.preventDefault();
-    let input= document.querySelector("#input");
     let amount = input.value;
+    
     if ( amount == "" || amount < 0)
     {
         input.value = 1;
@@ -50,14 +50,17 @@ btn.addEventListener("click",async (evt)=>{
     let formate = await responce.json();
     const from = document.querySelector(".selectfrom").value;
     const to = document.querySelector(".selectto").value;
-    console.log(from);
-    console.log(to);
-    var cfrom = parseFloat(formate.eur[from.toLowerCase()]);
-    var cto = parseFloat(formate.eur[to.toLowerCase()]);
-    console.log(cfrom);
-    console.log(cto);
-    var result = (cfrom/cto)*input;
-    console.log(result);
+    // console.log(from);
+    // console.log(to);
+    var cfrom = formate.eur[from.toLowerCase()];
+    var cto = formate.eur[to.toLowerCase()];
+    // console.log(cfrom);
+    // console.log(cto);
+    var result = ((parseFloat(amount))*cto)/cfrom;
+    // console.log(result);
+    let c = document.querySelector("#result");
+    // console.log(c);
+    c.innerText = "result :" + result.toFixed(2);
 });
 
 
