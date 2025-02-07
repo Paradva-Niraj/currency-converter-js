@@ -1,94 +1,162 @@
-body{
+
+
+ /* General Styles */
+body {
     background-color: #f4e4ba;
     color: #130342;
     text-transform: uppercase;
-    justify-items: center;
     user-select: none;
-    font-family :Arial, Helvetica, sans-serif
-}
-
-body h1{
-    font-size: clamp(20px, 5vw, 50px);
-    text-align: center;
-}
-
-.main{
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full height */
+    margin: 0;
 }
 
-.box{
+/* Header */
+body h1 {
+    font-size: clamp(24px, 5vw, 50px);
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Main Content Centering */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Container Box */
+.box {
     display: flex;
     flex-direction: column;
-    height: clamp(200px, 50vh, 450px);
-    width: clamp(220px, 50vw, 500px);
-    background-color: rgb(255, 255, 255);
+    height: auto;
+    width: 90%;
+    max-width: 450px;
+    background-color: white;
     color: black;
     justify-content: center;
-    align-items:center;
-    margin-top: 15vh;
+    align-items: center;
+    margin-top: 10vh;
     border-radius: 15px;
-    /* justify-content: center; */
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.amount{
+/* Amount Input */
+.amount {
     display: flex;
     flex-direction: column;
     font-size: 1.2rem;
+    width: 100%;
+    text-align: center;
 }
 
-#convert{
-    height: 60px;
-    width: 300px;
-    margin-top: 50px;
+.input {
+    height: 50px;
+    width: 100%;
+    max-width: 300px;
     border-radius: 12px;
-    font-size: 1.5rem;
-    font-weight: 800;  
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding-left: 15px;
+    text-align: center;
 }
 
-.input{
-    height: 60px;
-    width: 300px;
-    border-radius: 12px;
-    font-size: 1.5rem;
-    font-weight: 800; 
-    padding-left: 20px;
-}
-
-.option{
-    display: flex;
-    margin-top: 0.51rem;
-}
-
-select  {
-    font-size: 1.25rem;
-    outline: none;
-    border-color: transparent; /* Optional: Removes the border if needed */
-    box-shadow: none; /* Removes any default glow effect */
-}
-
-
-
-.option img{
-    max-width: 2.5rem;
-}
-
-.convert{
+/* Currency Selection */
+.convert {
     display: flex;
     margin-top: 20px;
     align-items: center;
-    width:  clamp(220px, 50vw, 300px);
+    width: 100%;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.from,.to{
+.from,
+.to {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 48%; /* Responsive width */
 }
 
-.output{
+/* Select & Flags */
+.option {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.option img {
+    max-width: 2rem;
+    margin-right: 10px;
+}
+
+select {
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+/* Convert Button */
+#convert {
+    height: 50px;
+    width: 80%;
+    max-width: 300px;
+    margin-top: 30px;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#convert:hover {
+    background-color: #e68a00;
+}
+
+/* Output Result */
+.output {
     margin-top: 1.5rem;
     font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
 }
 
+/* Responsive Design */
+@media (max-width: 480px) {
+    .box {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .convert {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .from,
+    .to {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .input {
+        width: 90%;
+    }
+
+    #convert {
+        width: 90%;
+    }
+}
