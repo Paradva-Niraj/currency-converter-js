@@ -1,15 +1,19 @@
 const list = document.querySelectorAll('#select');
 const btn = document.querySelector("#convert");
-const BASE_URL ="https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies";
+const input = parseFloat(document.querySelector("#input"));
+
+const BASE_URL ="https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json";
 
 
 for (let select of list)
 {
+    
     for (code in countryList)
     {
         let newop = document.createElement("option");
         newop.innerText=code;
         newop.value=code;
+       
         select.append(newop);
         if(select.name == "from" && code == "USD")
         {
@@ -33,7 +37,7 @@ const changeflag = (element) =>{
     img.src=newsrc;
 }
 
-btn.addEventListener("click",(evt)=>{
+btn.addEventListener("click",async (evt)=>{
     evt.preventDefault();
     let input= document.querySelector("#input");
     let amount = input.value;
@@ -42,5 +46,18 @@ btn.addEventListener("click",(evt)=>{
         input.value = 1;
         amount = 1;
     }
-    
+    let responce = await fetch(BASE_URL);
+    let formate = await responce.json();
+    const from = document.querySelector(".selectfrom").value;
+    const to = document.querySelector(".selectto").value;
+    console.log(from);
+    console.log(to);
+    var cfrom = parseFloat(formate.eur[from.toLowerCase()]);
+    var cto = parseFloat(formate.eur[to.toLowerCase()]);
+    console.log(cfrom);
+    console.log(cto);
+    var result = (cfrom/cto)*input;
+    console.log(result);
 });
+
+
