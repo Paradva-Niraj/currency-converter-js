@@ -1,1 +1,1 @@
- https://paradva-niraj.github.io/coruncy-converter-js/
+ https://paradva-niraj.github.io/currency-converter-js/
